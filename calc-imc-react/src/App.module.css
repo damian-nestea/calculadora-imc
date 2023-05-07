@@ -9,18 +9,36 @@ body {
 }
 
 .headerContainer {
-  background-color: lightgray;
   height: 20vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.headerContainer img{
-  width:14rem;
-  transition:0.5s;
+.headerContainer img {
+  width: 14rem;
+  transition: 0.5s;
 }
 
-.headerContainer img:hover{
-  width:16rem;
+.headerContainer img:hover {
+  width: 16rem;
 }
+
+main {
+  background-color: lightgreen;
+  display: flex;
+  gap:8rem;
+  padding:2rem 10rem;
+}
+
+.leftSideContainer {
+  background-color:red;
+  flex:1;
+}
+
+.rightSideContainer {
+  background-color:green;
+  flex:1;
+}
+
+
