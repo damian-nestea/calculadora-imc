@@ -28,7 +28,7 @@ main {
   background-color: lightgreen;
   display: flex;
   gap:8rem;
-  padding:2rem 10rem;
+  padding:0 10rem;
 }
 
 .leftSideContainer {
