@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import styles from "./App.module.css";
 import Logo from "./assets/logo.png";
+import { imcLevels, calculateImc } from "./helpers/imc";
+import ImcLevel from "./components/ImcLevel";
 
 const App = () => {
   const [heightInput, setHeightInput] = useState(0);
   const [weightInput, setWeightInput] = useState(0);
+
+  console.log(imcLevels);
 
   const handleCalculateIMC = () => {
     if (heightInput && weightInput) {
@@ -46,7 +50,11 @@ const App = () => {
           />
           <button onClick={handleCalculateIMC}>Calcular</button>
         </section>
-        <section className={styles.rightSideContainer}>Right</section>
+        <section className={styles.rightSideContainer}>
+          {imcLevels.map((level , index) => {
+            return <ImcLevel key={index} level={level} />
+          })}
+        </section>
       </main>
     </div>
   );
