@@ -3,6 +3,7 @@ import styles from "./App.module.css";
 import Logo from "./assets/logo.png";
 import { imcLevels, calculateImc } from "./helpers/imc";
 import ImcLevel from "./components/ImcLevel";
+import Result from "./components/Result";
 
 const App = () => {
   const [heightInput, setHeightInput] = useState(0);
@@ -11,8 +12,11 @@ const App = () => {
 
   const handleCalculateIMC = () => {
     if (heightInput && weightInput) {
-      setResultToShow(calculateImc(heightInput,weightInput));
+      setResultToShow(calculateImc(heightInput, weightInput));
+      setHeightInput("");
+      setWeightInput("");
     } else {
+      setResultToShow(null);
       alert("Digite todos os campos!");
     }
   };
@@ -55,9 +59,7 @@ const App = () => {
             imcLevels.map((level, index) => {
               return <ImcLevel key={index} level={level} />;
             })}
-          {resultToShow && 
-            <ImcLevel level={resultToShow} />
-          }
+          {resultToShow && <Result level={resultToShow} />}
         </section>
       </main>
     </div>
