@@ -10,6 +10,7 @@ const Result = ({ level }) => {
       <h2 className={styles.titulo}>{level.level}</h2>
       <p className={styles.resultImc}>Seu IMC é de <strong>{level.currentImc}!</strong></p>
       <p className={styles.descricao}>IMC entre <strong>{level.imc[0]}</strong> e <strong>{level.imc[1]}</strong>.</p>
+      <button className={styles.botao}>Novo cálculo</button>
     </div>
   );
 };
