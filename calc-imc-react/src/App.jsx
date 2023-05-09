@@ -59,7 +59,9 @@ const App = () => {
             imcLevels.map((level, index) => {
               return <ImcLevel key={index} level={level} />;
             })}
-          {resultToShow && <Result level={resultToShow} />}
+          {resultToShow && (
+            <Result level={resultToShow} setResultToShow={setResultToShow} />
+          )}
         </section>
       </main>
     </div>
