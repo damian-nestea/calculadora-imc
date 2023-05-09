@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   gap: 2rem;
-  padding: 2rem;
+  padding: 1rem;
   opacity: 0.8;
   color:#fff;
   border-radius:0.5rem;
@@ -11,4 +11,13 @@
 
 .titulo {
   font-size:1.2rem;
+  width: 40%;
+}
+
+.icone {
+  width: 10%;
+}
+
+.descricao {
+  font-size:0.8rem;
 }
