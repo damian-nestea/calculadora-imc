@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import styles from "./App.module.css";
 import Logo from "./assets/logo.png";
+import { imcLevels, calculateImc } from "./helpers/imc";
 
 const App = () => {
   const [heightInput, setHeightInput] = useState(0);
   const [weightInput, setWeightInput] = useState(0);
+
+  console.log(imcLevels);
 
   const handleCalculateIMC = () => {
     if (heightInput && weightInput) {
