@@ -9,6 +9,7 @@ export const calculateImc = (height, weight) => {
   const imc = weight / (height * height);
   for (let i in imcLevels) {
     if (imc >= imcLevels[i].imc[0] && imc <= imcLevels[i].imc[1]) {
+      imcLevels[i].currentImc = imc;
       return imcLevels[i];
     }
   }
