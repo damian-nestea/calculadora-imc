@@ -7,11 +7,11 @@ import ImcLevel from "./components/ImcLevel";
 const App = () => {
   const [heightInput, setHeightInput] = useState(0);
   const [weightInput, setWeightInput] = useState(0);
-
-  console.log(imcLevels);
+  const [resultToShow, setResultToShow] = useState(null);
 
   const handleCalculateIMC = () => {
     if (heightInput && weightInput) {
+      setResultToShow(calculateImc(heightInput,weightInput));
     } else {
       alert("Digite todos os campos!");
     }
@@ -51,9 +51,13 @@ const App = () => {
           <button onClick={handleCalculateIMC}>Calcular</button>
         </section>
         <section className={styles.rightSideContainer}>
-          {imcLevels.map((level , index) => {
-            return <ImcLevel key={index} level={level} />
-          })}
+          {!resultToShow &&
+            imcLevels.map((level, index) => {
+              return <ImcLevel key={index} level={level} />;
+            })}
+          {resultToShow && 
+            <ImcLevel level={resultToShow} />
+          }
         </section>
       </main>
     </div>
