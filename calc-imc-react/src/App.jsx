@@ -3,16 +3,18 @@ import styles from "./App.module.css";
 import Logo from "./assets/logo.png";
 import { imcLevels, calculateImc } from "./helpers/imc";
 import ImcLevel from "./components/ImcLevel";
+import Result from "./components/Result";
 
 const App = () => {
   const [heightInput, setHeightInput] = useState(0);
   const [weightInput, setWeightInput] = useState(0);
-
-  console.log(imcLevels);
+  const [resultToShow, setResultToShow] = useState(null);
 
   const handleCalculateIMC = () => {
     if (heightInput && weightInput) {
+      setResultToShow(calculateImc(heightInput, weightInput));
     } else {
+      setResultToShow(null);
       alert("Digite todos os campos!");
     }
   };
@@ -39,6 +41,7 @@ const App = () => {
             onChange={(e) => {
               setHeightInput(e.target.value);
             }}
+            disabled={resultToShow ? true : false}
           />
           <input
             type="number"
@@ -47,13 +50,28 @@ const App = () => {
             onChange={(e) => {
               setWeightInput(e.target.value);
             }}
+            disabled={resultToShow ? true : false}
           />
-          <button onClick={handleCalculateIMC}>Calcular</button>
+          <button
+            onClick={handleCalculateIMC}
+            disabled={resultToShow ? true : false}
+          >
+            Calcular
+          </button>
         </section>
         <section className={styles.rightSideContainer}>
-          {imcLevels.map((level , index) => {
-            return <ImcLevel key={index} level={level} />
-          })}
+          {!resultToShow &&
+            imcLevels.map((level, index) => {
+              return <ImcLevel key={index} level={level} />;
+            })}
+          {resultToShow && (
+            <Result
+              level={resultToShow}
+              setResultToShow={setResultToShow}
+              setHeightInput={setHeightInput}
+              setWeightInput={setWeightInput}
+            />
+          )}
         </section>
       </main>
     </div>
