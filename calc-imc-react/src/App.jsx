@@ -13,8 +13,6 @@ const App = () => {
   const handleCalculateIMC = () => {
     if (heightInput && weightInput) {
       setResultToShow(calculateImc(heightInput, weightInput));
-      setHeightInput("");
-      setWeightInput("");
     } else {
       setResultToShow(null);
       alert("Digite todos os campos!");
@@ -43,6 +41,7 @@ const App = () => {
             onChange={(e) => {
               setHeightInput(e.target.value);
             }}
+            disabled={resultToShow ? true : false}
           />
           <input
             type="number"
@@ -51,8 +50,14 @@ const App = () => {
             onChange={(e) => {
               setWeightInput(e.target.value);
             }}
+            disabled={resultToShow ? true : false}
           />
-          <button onClick={handleCalculateIMC}>Calcular</button>
+          <button
+            onClick={handleCalculateIMC}
+            disabled={resultToShow ? true : false}
+          >
+            Calcular
+          </button>
         </section>
         <section className={styles.rightSideContainer}>
           {!resultToShow &&
@@ -60,7 +65,12 @@ const App = () => {
               return <ImcLevel key={index} level={level} />;
             })}
           {resultToShow && (
-            <Result level={resultToShow} setResultToShow={setResultToShow} />
+            <Result
+              level={resultToShow}
+              setResultToShow={setResultToShow}
+              setHeightInput={setHeightInput}
+              setWeightInput={setWeightInput}
+            />
           )}
         </section>
       </main>

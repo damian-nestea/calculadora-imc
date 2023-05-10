@@ -3,7 +3,7 @@ import styles from "./Result.module.css";
 import happyIcon from "../../assets/happy.png";
 import sadIcon from "../../assets/sad.png";
 
-const Result = ({ level, setResultToShow }) => {
+const Result = ({ level, setResultToShow, setHeightInput, setWeightInput }) => {
   return (
     <div className={styles.flexItem} style={{ backgroundColor: level.color }}>
       <img
@@ -22,6 +22,8 @@ const Result = ({ level, setResultToShow }) => {
         className={styles.botao}
         onClick={() => {
           setResultToShow(null);
+          setHeightInput("");
+          setWeightInput("");
         }}
       >
         Novo cálculo
