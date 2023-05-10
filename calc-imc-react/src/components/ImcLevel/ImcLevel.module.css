@@ -24,3 +24,14 @@
   font-size: 0.8rem;
   text-align: right;
 }
+
+@media (max-width: 1000px ){
+  .flexItem{
+    flex-direction:column;
+    align-items:center;
+    gap:1rem;
+  }
+  .titulo{
+    width:auto;
+  }
+}

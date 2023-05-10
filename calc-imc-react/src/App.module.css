@@ -102,3 +102,17 @@ main {
   flex-direction: column;
   gap: 1rem;
 }
+
+@media (max-width: 1200px) {
+  main {
+    padding: 0 10rem;
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  main {
+    padding: 0 5rem;
+  }
+}
