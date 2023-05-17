@@ -10,9 +10,26 @@ const App = () => {
   const [weightInput, setWeightInput] = useState(0);
   const [resultToShow, setResultToShow] = useState(null);
 
+  const imc = calculateImc(heightInput, weightInput);
+
   const handleCalculateIMC = () => {
     if (heightInput && weightInput) {
-      setResultToShow(calculateImc(heightInput, weightInput));
+      if (
+        heightInput > 0 &&
+        heightInput < 260 &&
+        weightInput > 0 &&
+        weightInput < 300
+      ) {
+        if (imc > 0 && imc <= 99) {
+          setResultToShow(imc);
+        } else {
+          alert("Verifique se os dados estão corretos!");
+        }
+      } else {
+        setHeightInput(0);
+        setWeightInput(0);
+        alert("Digite os campos corretamente!");
+      }
     } else {
       setResultToShow(null);
       alert("Digite todos os campos!");
