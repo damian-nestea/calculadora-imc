@@ -12,7 +12,18 @@ const App = () => {
 
   const handleCalculateIMC = () => {
     if (heightInput && weightInput) {
-      setResultToShow(calculateImc(heightInput, weightInput));
+      if (
+        heightInput > 0 &&
+        heightInput < 260 &&
+        weightInput > 0 &&
+        weightInput < 300
+      ) {
+        setResultToShow(calculateImc(heightInput, weightInput));
+      } else {
+        setHeightInput(0);
+        setWeightInput(0);
+        alert("Digite os campos corretamente!");
+      }
     } else {
       setResultToShow(null);
       alert("Digite todos os campos!");
