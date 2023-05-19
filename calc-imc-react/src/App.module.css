@@ -57,6 +57,7 @@ main {
 }
 
 .leftSideContainer input {
+  font-family: "Poppins";
   font-size: 1rem;
   font-style: italic;
   width: 100%;
@@ -74,6 +75,7 @@ main {
 }
 
 .leftSideContainer button {
+  font-family: "Poppins";
   font-size: 1.5rem;
   text-transform: uppercase;
   font-weight: 700;
