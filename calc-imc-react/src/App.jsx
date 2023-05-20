@@ -67,10 +67,10 @@ const App = () => {
               disabled={resultToShow ? true : false}
             />
             <input
-              type="text"
-              placeholder="Digite o seu peso. Ex: 80.3 (em kg)."
+              type="number"
+              placeholder="Digite o seu peso. Ex: 80.3 (em kg) (máx. 2 casas decimais)"
               value={weightInput > 0 ? weightInput : ""}
-              pattern="^\d*[1-9]\d*$"
+              pattern="^\s*(?=.*[1-9])\d*(?:\.\d{1,2})?\s*$"
               required
               onChange={(e) => {
                 setWeightInput(Number(e.target.value));
