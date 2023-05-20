@@ -11,7 +11,15 @@ const App = () => {
   const [resultToShow, setResultToShow] = useState(null);
   const imc = calculateImc(heightInput, weightInput);
 
-  const handleCalculateIMC = () => {
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "auto",
+    });
+  };
+
+  const handleCalculateIMC = (e) => {
+    e.preventDefault();
     if (heightInput && weightInput) {
       if (
         heightInput > 0 &&
@@ -19,12 +27,14 @@ const App = () => {
         weightInput > 0 &&
         weightInput < 300
       ) {
-        console.log(imc)
         if (imc != null) {
           if (imc.currentImc > 0 && imc.currentImc <= 99) {
             setResultToShow(imc);
+            scrollToBottom();
           }
         } else {
+          setHeightInput(0);
+          setWeightInput(0);
           alert("Verifique se os dados estão corretos!");
         }
       } else {
@@ -32,8 +42,11 @@ const App = () => {
         setWeightInput(0);
         alert("Digite os campos corretamente!");
       }
-    } 
+    } else {
+      alert("Digite os campos requeridos!");
+    }
   };
+
   return (
     <div className={styles.mainAppContainer}>
       <header className={styles.headerContainer}>
@@ -51,34 +64,34 @@ const App = () => {
             Que tal descobrir o seu IMC? Coloque seus dados na calculadora!.
           </p>
           <form>
-          <input
-            type="text"
-            placeholder="Digite a sua altura. Ex: 183 (em centímetros)."
-            value={heightInput > 0 ? heightInput : ""}
-            pattern="^\d*[1-9]\d*$"
-            required
-            onChange={(e) => {
-              setHeightInput(Number(e.target.value));
-            }}
-            disabled={resultToShow ? true : false}
-          />
-          <input
-            type="text"
-            placeholder="Digite o seu peso. Ex: 80.3 (em kg)."
-            value={weightInput > 0 ? weightInput : ""}
-            pattern="^\d*[1-9]\d*$"
-            required
-            onChange={(e) => {
-              setWeightInput(Number(e.target.value));
-            }}
-            disabled={resultToShow ? true : false}
-          />
-          <button
-            onClick={handleCalculateIMC}
-            disabled={resultToShow ? true : false}
-          >
-            Calcular
-          </button>
+            <input
+              type="text"
+              placeholder="Digite a sua altura. Ex: 183 (em centímetros)."
+              value={heightInput > 0 ? heightInput : ""}
+              pattern="^\d*[1-9]\d*$"
+              required
+              onChange={(e) => {
+                setHeightInput(Number(e.target.value));
+              }}
+              disabled={resultToShow ? true : false}
+            />
+            <input
+              type="number"
+              placeholder="Digite o seu peso. Ex: 80.3 (em kg) (máx. 2 casas decimais)"
+              value={weightInput > 0 ? weightInput : ""}
+              pattern="^\s*(?=.*[1-9])\d*(?:\.\d{1,2})?\s*$"
+              required
+              onChange={(e) => {
+                setWeightInput(Number(e.target.value));
+              }}
+              disabled={resultToShow ? true : false}
+            />
+            <button
+              onClick={handleCalculateIMC}
+              disabled={resultToShow ? true : false}
+            >
+              Calcular
+            </button>
           </form>
         </section>
         <section className={styles.rightSideContainer}>

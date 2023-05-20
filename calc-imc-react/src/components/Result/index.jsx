@@ -21,6 +21,7 @@ const Result = ({ level, setResultToShow, setHeightInput, setWeightInput }) => {
       <button
         className={styles.botao}
         onClick={() => {
+          window.scrollTo(0, 0);
           setResultToShow(null);
           setHeightInput("");
           setWeightInput("");
