@@ -11,6 +11,13 @@ const App = () => {
   const [resultToShow, setResultToShow] = useState(null);
   const imc = calculateImc(heightInput, weightInput);
 
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "auto",
+    });
+  };
+
   const handleCalculateIMC = (e) => {
     e.preventDefault();
     if (heightInput && weightInput) {
@@ -23,6 +30,7 @@ const App = () => {
         if (imc != null) {
           if (imc.currentImc > 0 && imc.currentImc <= 99) {
             setResultToShow(imc);
+            scrollToBottom();
           }
         } else {
           setHeightInput(0);
@@ -38,6 +46,7 @@ const App = () => {
       alert("Digite os campos requeridos!");
     }
   };
+
   return (
     <div className={styles.mainAppContainer}>
       <header className={styles.headerContainer}>
