@@ -13,13 +13,13 @@ const App = () => {
 
   const handleCalculateIMC = () => {
     if (heightInput && weightInput) {
-      console.log(imc);
       if (
         heightInput > 0 &&
         heightInput < 260 &&
         weightInput > 0 &&
         weightInput < 300
       ) {
+        console.log(imc)
         if (imc != null) {
           if (imc.currentImc > 0 && imc.currentImc <= 99) {
             setResultToShow(imc);
@@ -32,10 +32,7 @@ const App = () => {
         setWeightInput(0);
         alert("Digite os campos corretamente!");
       }
-    } else {
-      setResultToShow(null);
-      alert("Digite todos os campos!");
-    }
+    } 
   };
   return (
     <div className={styles.mainAppContainer}>
@@ -53,21 +50,26 @@ const App = () => {
           <p>
             Que tal descobrir o seu IMC? Coloque seus dados na calculadora!.
           </p>
+          <form>
           <input
-            type="number"
+            type="text"
             placeholder="Digite a sua altura. Ex: 183 (em centímetros)."
             value={heightInput > 0 ? heightInput : ""}
+            pattern="^\d*[1-9]\d*$"
+            required
             onChange={(e) => {
-              setHeightInput(e.target.value);
+              setHeightInput(Number(e.target.value));
             }}
             disabled={resultToShow ? true : false}
           />
           <input
-            type="number"
+            type="text"
             placeholder="Digite o seu peso. Ex: 80.3 (em kg)."
             value={weightInput > 0 ? weightInput : ""}
+            pattern="^\d*[1-9]\d*$"
+            required
             onChange={(e) => {
-              setWeightInput(e.target.value);
+              setWeightInput(Number(e.target.value));
             }}
             disabled={resultToShow ? true : false}
           />
@@ -77,6 +79,7 @@ const App = () => {
           >
             Calcular
           </button>
+          </form>
         </section>
         <section className={styles.rightSideContainer}>
           {!resultToShow &&
