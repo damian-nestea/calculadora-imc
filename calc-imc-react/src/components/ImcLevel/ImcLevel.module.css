@@ -8,6 +8,11 @@
   opacity: 0.8;
   color: #fff;
   border-radius: 0.5rem;
+  transition: 0.8s;
+}
+
+.flexItem :hover {
+  opacity: 0.5;
 }
 
 .titulo {
