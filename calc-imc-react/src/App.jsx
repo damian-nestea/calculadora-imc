@@ -95,11 +95,11 @@ const App = () => {
           </form>
         </section>
         <section className={styles.rightSideContainer}>
-          {!resultToShow &&
-            imcLevels.map((level, index) => {
-              return <ImcLevel key={index} level={level} />;
-            })}
-          {resultToShow && (
+          {!resultToShow ? (
+            imcLevels.map((level, index) => (
+              <ImcLevel key={index} level={level} />
+            ))
+          ) : (
             <Result
               level={resultToShow}
               setResultToShow={setResultToShow}
